@@ -1,4 +1,5 @@
 #!/bin/sh
 cd "`dirname "$0"`"
 sed -E "s/^Packed on:.*\$/Packed on: `date`/" -i readme.md
-tar -czvf Minecraft.hmod usr install readme.md uninstall --group=root --owner=root
+mkdir bin
+tar -czvf bin/Minecraft.hmod usr install readme.md uninstall --group=root --owner=root
