@@ -1,0 +1,18 @@
+[Desktop Entry]
+
+Encoding=UTF-8
+
+Name=Java
+
+Comment=Java Control Panel
+
+Exec=jcontrol
+
+Icon=sun-jcontrol.png
+
+Terminal=false
+
+Type=Application
+
+Categories=Application;Settings;Java;X-Red-Hat-Base;X-Ximian-Settings;
+
