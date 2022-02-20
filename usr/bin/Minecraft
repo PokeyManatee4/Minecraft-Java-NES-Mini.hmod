@@ -1,0 +1,102 @@
+MC_DIR=~/.minecraft
+
+GAME_DIR=$MC_DIR/profile
+
+ASSETS_DIR=$MC_DIR/assets
+
+VERSION=1.13
+
+NATIVES_DIR=path/to/natives
+
+PLAYER=PokeyUwU
+
+WIDTH=800
+HEIGHT=640
+
+cd $MC_DIR
+
+java \
+    -Xss1M \
+    -Djava.library.path=$NATIVES_DIR \
+    -Dminecraft.launcher.brand=minecraft-launcher \
+    -Dminecraft.launcher.version=2.1.5965 \
+    -cp $MC_DIR/libraries/com/mojang/patchy/1.1/patchy-1.1.jar:$MC_DIR/libraries/oshi-project/oshi-core/1.1/oshi-core-1.1.jar:$MC_DIR/libraries/net/java/dev/jna/jna/4.4.0/jna-4.4.0.jar:$MC_DIR/libraries/net/java/dev/jna/platform/3.4.0/platform-3.4.0.jar:$MC_DIR/libraries/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar:$MC_DIR/libraries/com/mojang/javabridge/1.0.22/javabridge-1.0.22.jar:$MC_DIR/libraries/net/sf/jopt-simple/jopt-simple/5.0.3/jopt-simple-5.0.3.jar:$MC_DIR/libraries/io/netty/netty-all/4.1.25.Final/netty-all-4.1.25.Final.jar:$MC_DIR/libraries/com/google/guava/guava/21.0/guava-21.0.jar:$MC_DIR/libraries/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:$MC_DIR/libraries/commons-io/commons-io/2.5/commons-io-2.5.jar:$MC_DIR/libraries/commons-codec/commons-codec/1.10/commons-codec-1.10.jar:$MC_DIR/libraries/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar:$MC_DIR/libraries/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar:$MC_DIR/libraries/com/mojang/brigadier/1.0.17/brigadier-1.0.17.jar:$MC_DIR/libraries/com/mojang/datafixerupper/2.0.24/datafixerupper-2.0.24.jar:$MC_DIR/libraries/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar:$MC_DIR/libraries/com/mojang/authlib/1.5.25/authlib-1.5.25.jar:$MC_DIR/libraries/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar:$MC_DIR/libraries/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar:$MC_DIR/libraries/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar:$MC_DIR/libraries/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar:$MC_DIR/libraries/it/unimi/dsi/fastutil/8.2.1/fastutil-8.2.1.jar:$MC_DIR/libraries/org/apache/logging/log4j/log4j-api/2.8.1/log4j-api-2.8.1.jar:$MC_DIR/libraries/org/apache/logging/log4j/log4j-core/2.8.1/log4j-core-2.8.1.jar:$MC_DIR/libraries/org/lwjgl/lwjgl/3.2.2/lwjgl-3.2.2.jar:$MC_DIR/libraries/org/lwjgl/lwjgl-jemalloc/3.2.2/lwjgl-jemalloc-3.2.2.jar:$MC_DIR/libraries/org/lwjgl/lwjgl-openal/3.2.2/lwjgl-openal-3.2.2.jar:$MC_DIR/libraries/org/lwjgl/lwjgl-opengl/3.2.2/lwjgl-opengl-3.2.2.jar:$MC_DIR/libraries/org/lwjgl/lwjgl-glfw/3.2.2/lwjgl-glfw-3.2.2.jar:$MC_DIR/libraries/org/lwjgl/lwjgl-stb/3.2.2/lwjgl-stb-3.2.2.jar:$MC_DIR/libraries/com/mojang/text2speech/1.11.3/text2speech-1.11.3.jar:$MC_DIR/versions/1.14.4/1.14.4.jar \
+    -Xmx2G \
+    -XX:+UnlockExperimentalVMOptions \
+    -XX:+UseG1GC \
+    -XX:G1NewSizePercent=20 \
+    -XX:G1ReservePercent=20 \
+    -XX:MaxGCPauseMillis=50 \
+    -XX:G1HeapRegionSize=32M \
+    -Dlog4j.configurationFile=$ASSETS_DIR/log_configs/client-1.12.xml \
+    net.minecraft.client.main.Main \
+    --username $PLAYER \
+    --version $VERSION \
+    --gameDir $MC_DIR \
+    --assetsDir $ASSETS_DIR \
+    --assetIndex 1.13 \
+    --accessToken 0
+ 
+#
+ 
+  Atom WM_DELETE_WINDOW = XInternAtom(dpy, "WM_DELETE_WINDOW", False); 
+  XSetWMProtocols(dpy, win, &WM_DELETE_WINDOW, 1);  
+ 
+  bool uname_ok = false;
+  struct utsname sname;  
+  int ret = uname(&sname);
+  if (ret != -1)
+  {
+    uname_ok = true;
+  }
+ 
+  XEvent e;
+  while (1) 
+  {
+    XNextEvent(dpy, &e);
+    if (e.type == Expose) 
+    {
+      int y_offset = 20;
+ 
+#if defined(__APPLE_CC__)  
+      const char* s1 = "X11 test app under Mac OS X Lion";
+#else      
+      const char* s1 = "X11 test app under Linux";
+#endif      
+ 
+      const char* s2 = "(C)2012 Geeks3D.com"; 
+      XDrawString(dpy, win, DefaultGC(dpy, s), 10, y_offset, s1, strlen(s1));
+      y_offset += 20;
+      XDrawString(dpy, win, DefaultGC(dpy, s), 10, y_offset, s2, strlen(s2));
+      y_offset += 20;
+ 
+      if (uname_ok)
+      {
+        char buf[256] = {0};
+ 
+        sprintf(buf, "Starting It");
+        XDrawString(dpy, win, DefaultGC(dpy, s), 10, y_offset, buf, strlen(buf));
+        y_offset += 15;
+    }
+ 
+    if (e.type == KeyPress)
+    {
+      char buf[128] = {0};
+      KeySym keysym;
+      int len = XLookupString(&e.xkey, buf, sizeof buf, &keysym, NULL);
+      if (keysym == XK_Escape)
+        break;
+    }
+ 
+    if ((e.type == ClientMessage) && 
+        (static_cast<unsigned int>(e.xclient.data.l[0]) == WM_DELETE_WINDOW))
+    {
+      break;
+    }
+  }
+ 
+  XDestroyWindow(dpy, win);
+  XCloseDisplay(dpy);
+  return 0;
+}
+© 2022 GitHub, Inc.
