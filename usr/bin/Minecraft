@@ -84,10 +84,6 @@ java \
     }
  
     if ((e.type == ClientMessage) && 
-        (static_cast<unsigned int>(e.xclient.data.l[0]) == WM_DELETE_WINDOW))
-    {
-      break;
-    }
   }
  
   XDestroyWindow(dpy, win);
