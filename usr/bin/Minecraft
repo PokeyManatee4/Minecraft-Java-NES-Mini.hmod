@@ -6,7 +6,7 @@ ASSETS_DIR=$MC_DIR/assets
 
 VERSION=1.13
 
-NATIVES_DIR=path/to/natives
+NATIVES_DIR=$MC_DIR/libs
 
 PLAYER=PokeyUwU
 
